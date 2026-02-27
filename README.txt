@@ -12,7 +12,9 @@ DÉPENDANCES (ordre de chargement) :
 
 UTILISATION :
   - Ceinture avec slot container : classe "BeltSGEContainer_Sunrise_Belt"
-  - Container attachable à la ceinture : classe "BeltSGEContainer_AContainer1"
+  - Containers attachables à la ceinture :
+    BeltSGEContainer_AContainer1, BeltSGEContainer_AContainer2,
+    BeltSGEContainer_AContainer3, BeltSGEContainer_AContainer4
 
 Addon SGE utilisé : SGE_ClearSky (PBO Sunrise du mod STALKER Equipment).
 
