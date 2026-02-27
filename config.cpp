@@ -3,8 +3,8 @@
 	Ajoute un slot sur la ceinture SGE Stalker Sunrise pour y attacher
 	ON_AContainer1, ON_AContainer2, ON_AContainer3, ON_AContainer4.
 
-	Dépend de: STALKER Equipment (addons SGE_ClearSky + Stalker) + STALKER Containers Pack
-	Ceinture et slots lus depuis addons\Stalker\config.
+	Dépend de: STALKER Equipment (SGE_ClearSky + SGE_Loner) + ON_Container_Pack.
+	Optionnel: MH_Artefact_Redux pour les containers à artefacts (Belt_Cont1/2/3).
 */
 
 class CfgPatches
@@ -20,7 +20,8 @@ class CfgPatches
 			"DZ_Scripts",
 			"SGE_ClearSky",
 			"SGE_Loner",
-			"ON_Container_Pack"
+			"ON_Container_Pack",
+			"MH_Artefact_Redux"
 		};
 	};
 };
@@ -41,16 +42,14 @@ class CfgMods
 		version = "1.0";
 		extra = 0;
 		type = "mod";
-	};
-};
-
-class CfgSlots
-{
-	class Slot_StalkerBeltContainer
-	{
-		name = "StalkerBeltContainer";
-		displayName = "Container";
-		ghostIcon = "set:dayz_inventory image:backpack";
+		class defs
+		{
+			class worldScriptModule
+			{
+				value = "";
+				files[] = { "BeltSGEContainer/Scripts/4_World" };
+			};
+		};
 	};
 };
 
@@ -62,14 +61,13 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "Ceinture Sunrise (slot container)";
-		// Ordre explicite = parent SGE (4 slots) + notre slot — évite perte des pouches et affichage équipé
+		// Même slots que la ceinture SGE (Belt_Cont = slot container pour nos ON_AContainer)
 		attachments[] =
 		{
 			"Stalker_Sunrise_Belt_Pouches_L",
 			"Stalker_Sunrise_Belt_Pouches_R",
 			"Belt_Cont",
-			"Med_Pouch",
-			"StalkerBeltContainer"
+			"Med_Pouch"
 		};
 		class GUIInventoryAttachmentsProps
 		{
@@ -105,14 +103,6 @@ class CfgVehicles
 				icon = "set:SGE_icons image:Med_Pouch";
 				section = 1;
 			};
-			class StalkerContainer
-			{
-				name = "StalkerBeltContainer";
-				description = "";
-				attachmentSlots[] = { "StalkerBeltContainer" };
-				icon = "set:SGE_icons image:Belt_Cont";
-				section = 1;
-			};
 		};
 	};
 
@@ -125,24 +115,51 @@ class CfgVehicles
 	{
 		scope = 2;
 		displayName = "BeltSGEContainer1";
-		inventorySlot[] += { "StalkerBeltContainer" };
+		inventorySlot[] += { "Belt_Cont" };
 	};
 	class BeltSGEContainer_AContainer2 : ON_AContainer2
 	{
 		scope = 2;
 		displayName = "BeltSGEContainer2";
-		inventorySlot[] += { "StalkerBeltContainer" };
+		inventorySlot[] += { "Belt_Cont" };
 	};
 	class BeltSGEContainer_AContainer3 : ON_AContainer3
 	{
 		scope = 2;
 		displayName = "BeltSGEContainer3";
-		inventorySlot[] += { "StalkerBeltContainer" };
+		inventorySlot[] += { "Belt_Cont" };
 	};
 	class BeltSGEContainer_AContainer4 : ON_AContainer4
 	{
 		scope = 2;
 		displayName = "BeltSGEContainer4";
-		inventorySlot[] += { "StalkerBeltContainer" };
+		inventorySlot[] += { "Belt_Cont" };
+	};
+
+	// Containers ceinture SGE : 1, 2 ou 3 artefacts (Artefact Redux uniquement)
+	class SGE_Stalker_Belt_Cont;
+
+	class SGE_Stalker_Belt_Cont1 : SGE_Stalker_Belt_Cont
+	{
+		scope = 2;
+		displayName = "Container ceinture (1 artefact)";
+		descriptionShort = "Accepte 1 artefact Redux.";
+		itemsCargoSize[] = { 1, 1 };
+	};
+
+	class SGE_Stalker_Belt_Cont2 : SGE_Stalker_Belt_Cont
+	{
+		scope = 2;
+		displayName = "Container ceinture (2 artefacts)";
+		descriptionShort = "Accepte 2 artefacts Redux.";
+		itemsCargoSize[] = { 2, 1 };
+	};
+
+	class SGE_Stalker_Belt_Cont3 : SGE_Stalker_Belt_Cont
+	{
+		scope = 2;
+		displayName = "Container ceinture (3 artefacts)";
+		descriptionShort = "Accepte 3 artefacts Redux.";
+		itemsCargoSize[] = { 3, 1 };
 	};
 };
