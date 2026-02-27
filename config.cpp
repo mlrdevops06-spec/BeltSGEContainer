@@ -136,7 +136,7 @@ class CfgVehicles
 		inventorySlot[] += { "Belt_Cont" };
 	};
 
-	// Containers ceinture SGE : 1, 2 ou 3 artefacts (Artefact Redux uniquement)
+	// Containers ceinture SGE : slots Artifacts1/2/3 (ON_Container_Pack), 1 à 3 artefacts Redux
 	class SGE_Stalker_Belt_Cont;
 
 	class SGE_Stalker_Belt_Cont1 : SGE_Stalker_Belt_Cont
@@ -144,7 +144,8 @@ class CfgVehicles
 		scope = 2;
 		displayName = "Container ceinture (1 artefact)";
 		descriptionShort = "Accepte 1 artefact Redux.";
-		itemsCargoSize[] = { 1, 1 };
+		attachments[] = { "Artifacts1" };
+		itemsCargoSize[] = { 0, 0 };
 	};
 
 	class SGE_Stalker_Belt_Cont2 : SGE_Stalker_Belt_Cont
@@ -152,7 +153,8 @@ class CfgVehicles
 		scope = 2;
 		displayName = "Container ceinture (2 artefacts)";
 		descriptionShort = "Accepte 2 artefacts Redux.";
-		itemsCargoSize[] = { 2, 1 };
+		attachments[] = { "Artifacts1", "Artifacts2" };
+		itemsCargoSize[] = { 0, 0 };
 	};
 
 	class SGE_Stalker_Belt_Cont3 : SGE_Stalker_Belt_Cont
@@ -160,6 +162,7 @@ class CfgVehicles
 		scope = 2;
 		displayName = "Container ceinture (3 artefacts)";
 		descriptionShort = "Accepte 3 artefacts Redux.";
-		itemsCargoSize[] = { 3, 1 };
+		attachments[] = { "Artifacts1", "Artifacts2", "Artifacts3" };
+		itemsCargoSize[] = { 0, 0 };
 	};
 };
